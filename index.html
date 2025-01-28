@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Digital Library</h1>
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#books">Books</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <div class="search-filter">
+        <input type="text" id="searchBar" placeholder="Search books...">
+        <select id="filterCategory">
+            <option value="">All Categories</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-Fiction</option>
+            <option value="Science">Science</option>
+            <option value="History">History</option>
+        </select>
+        <button onclick="applyFilter()">Cari</button>
+    </div>
+
+    
+    <section class="hero">
+        <h2>Welcome to My Digital Library</h2>
+        <p>Explore a world of knowledge and discover your next favorite book today!</p>
+        <button>Get Started</button>
+    </section>
+
+    <section class="services" id="services">
+        <div class="content">
+            <div class="boxes">
+                <div class="box">
+                    <div class="icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="topic">Total Buku</div>
+                    <p>Jumlah Semua Buku</p>
+                </div>
+                <div class="box">
+                    <div class="icon">
+                        <i class="fas fa-bookmark"></i>
+                    </div>
+                    <div class="topic">Jenis Buku</div>
+                    <p>Pilih Berdasarkan Kategori</p>
+                </div><
+                <div class="box">
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="topic">Buku yang Dipinjam</div>
+                    <p>Lihat Buku yang Sedang Dipinjam</p>
+                </div>
+                <div class="box">
+                    <div class="icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="topic">Statistik Buku</div>
+                    <p>Statistik Peminjaman dan Pengembalian</p>
+                </div>
+                <div class="box">
+                    <div class="icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="topic">Pencarian Buku</div>
+                    <p>Cari Buku Berdasarkan Judul</p>
+                </div>
+                <div class="box">
+                    <div class="icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="topic">Jadwal Pengembalian</div>
+                    <p>Jadwal Pengembalian Buku</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+      <style>
+         /* My Services CSS */
+.services .boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.services .boxes .box {
+  margin: 20px 0;
+  width: calc(100% / 3 - 20px);
+  text-align: center;
+  border-radius: 12px;
+  padding: 30px 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+  cursor: default;
+  transition: all 0.4s ease;
+}
+
+.services .boxes .box:hover {
+  background: #4070f4;
+  color: #fff;
+}
+
+.services .boxes .box .icon {
+  height: 50px;
+  width: 50px;
+  background: #4070f4;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  font-size: 18px;
+  color: #fff;
+  margin: 0 auto 10px auto;
+  transition: all 0.4s ease;
+}
+
+.boxes .box:hover .icon {
+  background-color: #fff;
+  color: #4070f4;
+}
+
+.services .boxes .box:hover .topic,
+.services .boxes .box:hover p {
+  color: #0E2431;
+  transition: all 0.4s ease;
+}
+
+.services .boxes .box:hover .topic,
+.services .boxes .box:hover p {
+  color: #fff;
+}
+
+/* Responsiveness untuk layar kecil */
+@media (max-width: 768px) {
+    .services .boxes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services .box {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+      </style>
+
+    <div class="library" id="library">
+        <!-- Books will be dynamically added here -->
+    </div>
+
+    <script>
+        const books = [
+            { title: "172 Days", category: "Fiction", image: "images/172Day.jpeg" },
+            { title: "Angkasa 56", category: "History", image: "images/angkasa56.jpeg" },
+            { title: "Cerita Cinta", category: "Science", image: "images/CeritaCinta.jpeg" },
+            { title: "Cerita Tentang Rani", category: "Fiction", image: "images/CeritaRani.jpeg" },
+            { title: "Harry Potter", category: "Non-Fiction", image: "images/HarryPotter.jpeg" },
+            { title: "Hello", category: "Fiction", image: "images/Hello.jpeg" },
+            { title: "Jatung Ke Angkasa", category: "History", image: "images/JatuhKeAngkasa.jpeg" },
+            { title: "Kopral Jono", category: "Science", image: "images/KopralJono.jpeg" },
+            { title: "Mada", category: "Fiction", image: "images/Mada.jpeg" },
+            { title: "Misteri Pantai Mutiara", category: "Non-Fiction", image: "images/MisteriPantai.jpeg" },
+            { title: "Oh My Savior", category: "Fiction", image: "images/OhMySavior.jpeg" },
+            { title: "Pulang", category: "History", image: "images/Pulang.jpeg" },
+            { title: "Segala Yang Diisap Langit", category: "Science", image: "images/SegalaLangit.jpeg" },
+            { title: "Sumur", category: "Fiction", image: "images/sumur.jpeg" },
+            { title: "Yang Telah Pergi", category: "Non-Fiction", image: "images/YangPergi.jpeg" },
+            { title: "Nebula", category: "Fiction", image: "images/nebula.jpeg" },
+            { title: "Tentang Kamu", category: "History", image: "images/TentangKamu.jpeg" },
+            { title: "Rembulan Tenggalam Di Wajahmu", category: "Science", image: "images/rembulan.jpeg" },
+            { title: "Hujan", category: "Fiction", image: "images/hujan.jpeg" },
+            { title: "Rindu", category: "Non-Fiction", image: "images/Rindu.jpeg" },
+        ];
+
+        function displayBooks(filteredBooks) {
+            const library = document.getElementById('library');
+            library.innerHTML = '';
+            filteredBooks.forEach(book => {
+                const bookDiv = document.createElement('div');
+                bookDiv.classList.add('book');
+                bookDiv.innerHTML = `
+                    <img src="${book.image}" alt="${book.title}">
+                    <h4>${book.title}</h4>
+                    <p>Category: ${book.category}</p>
+                    <button>Read More</button>
+                `;
+                library.appendChild(bookDiv);
+            });
+        }
+
+        function applyFilter() {
+            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+            const selectedCategory = document.getElementById('filterCategory').value;
+
+            const filteredBooks = books.filter(book => {
+                const matchesSearch = book.title.toLowerCase().includes(searchTerm);
+                const matchesCategory = selectedCategory === '' || book.category === selectedCategory;
+                return matchesSearch && matchesCategory;
+            });
+
+            displayBooks(filteredBooks);
+        }
+
+        // Initial display
+        displayBooks(books);
+    </script>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Digital Library. All rights reserved.</p>
+    </footer>
+</body>
+</html>
