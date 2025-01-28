@@ -8,7 +8,7 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #ffffff, #ffffff);
             color: #fff;
             overflow-x: hidden;
         }
@@ -192,31 +192,6 @@
             gap: 20px;
             padding: 20px;
         }
-
-        /* Style untuk section services */
-.services {
-    background-color: #f9f9f9;
-    padding: 60px 0;
-}
-
-.services .content {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.services .title {
-    font-size: 2.5em;
-    margin-bottom: 40px;
-    color: #333;
-    text-transform: uppercase;
-}
-
-.services .title span {
-    color: #5a67d8; /* Warna untuk judul */
-}
-
 
 
 
